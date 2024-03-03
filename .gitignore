@@ -1,6 +1,9 @@
 .vagrant
 forensic/*
+!forensic/.gitkeep
 reverse/*
+!reverse/.gitkeep
 maldev/*
+!maldev/.gitkeep
 playbook/roles/install_idapro
 playbook/roles/add_kape/files/KAPE.zip
