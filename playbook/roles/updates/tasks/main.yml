@@ -1,0 +1,6 @@
+---
+- name: Install Windows Updates
+  ansible.builtin.import_tasks: windows_update.yml
+
+- name: Update Windows Store Apps
+  ansible.builtin.import_tasks: store_apps_update.yml

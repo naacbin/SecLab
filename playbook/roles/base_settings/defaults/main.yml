@@ -1,0 +1,78 @@
+---
+base_settings_customize_keyboard_layout: true
+base_settings_remove_bloatware: true
+base_settings_install_choco: true
+base_settings_install_choco_pkg: false
+base_settings_install_windows_features: false
+base_settings_install_wsl2: false
+base_settings_configure_explorer: true
+base_settings_configure_taskbar: true
+base_settings_configure_start_menu: true
+base_settings_configure_network: true
+base_settings_disable_mouse_acceleration: true
+base_settings_enable_dark_mode: true
+base_settings_configure_hostname: false
+
+
+base_settings_keyboard_layout: 'fr-FR'
+base_settings_bloatware:
+  - Microsoft.BingNews
+  - Microsoft.BingWeather
+  - Microsoft.GamingApp
+  - Microsoft.GetHelp
+  - Microsoft.Getstarted
+  - Microsoft.Messaging
+  - Microsoft.Microsoft3DViewer
+  - Microsoft.MicrosoftOfficeHub
+  - Microsoft.MicrosoftSolitaireCollection
+  - Microsoft.MicrosoftStickyNotes
+  - Microsoft.MixedReality.Portal
+  # - Microsoft.MSPaint
+  - Microsoft.Office.OneNote
+  - Microsoft.OneConnect
+  - Microsoft.People
+  - Microsoft.PowerAutomateDesktop
+  - Microsoft.Print3D
+  - Microsoft.ScreenSketch
+  - Microsoft.SkypeApp
+  - Microsoft.Todos
+  - Microsoft.Windows.Photos
+  - Microsoft.WindowsAlarms
+  # - Microsoft.WindowsCalculator
+  - Microsoft.Wallet
+  - Microsoft.WindowsCamera
+  # - microsoft.windowscommunicationsapps
+  - Microsoft.WindowsFeedbackHub
+  - Microsoft.WindowsMaps
+  - Microsoft.WindowsSoundRecorder
+  - Microsoft.Xbox
+  - Microsoft.Xbox.TCUI
+  - Microsoft.XboxApp
+  - Microsoft.XboxGameOverlay
+  - Microsoft.XboxSpeechToTextOverlay
+  - Microsoft.YourPhone
+  - Microsoft.ZuneMusic
+  - Microsoft.ZuneVideo
+  - MicrosoftTeams
+
+base_settings_choco_packages:
+  - 7zip
+  - Firefox
+  - adobereader
+
+# List of features: "Get-WindowsOptionalFeature -Online"
+base_settings_windows_features:
+  Microsoft-Hyper-V: true
+
+# List of valid distributions that can be installed:
+# wsl-alpine
+# wsl-archlinux
+# wsl-debiangnulinux
+# wsl-fedoraremix
+# wsl-kalilinux
+# wsl-opensuse
+# wsl-sles
+# wsl-ubuntu-2004
+base_settings_wsl2_distribution: 'wsl-ubuntu-2004'
+
+base_settings_custom_hostname: 'DESKTOP-LURTVE3'

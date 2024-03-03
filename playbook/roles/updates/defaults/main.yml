@@ -1,0 +1,15 @@
+---
+updates_categories:
+  # You can install only specific updates by uncommenting it
+  # * - installs all updates
+  # - "*"
+  - Critical Updates
+  - Definition Updates
+  - Developer Kits
+  - Feature Packs
+  - Security Updates
+  - Service Packs
+  - Tools
+  - Update Rollups
+  - Updates
+  - Upgrades

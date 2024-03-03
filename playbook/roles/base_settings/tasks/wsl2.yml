@@ -1,0 +1,24 @@
+---
+- name: Ensure Windows Subsystem for Linux enabled.
+  ansible.windows.win_optional_feature:
+    name:
+      - Microsoft-Windows-Subsystem-Linux
+      - VirtualMachinePlatform
+    state: present
+  register: wsl_status
+
+- name: Restart the machine to complete the WSL install.
+  ansible.windows.win_reboot:
+  when: wsl_status.reboot_required
+
+- name: Ensure Linux kernel update package installed.
+  chocolatey.chocolatey.win_chocolatey:
+    name: wsl2
+    ignore_checksums: true
+    state: present
+
+- name: Ensure WSL2 is installed with "{{ base_settings_wsl2_distribution }}".
+  chocolatey.chocolatey.win_chocolatey:
+    name: "{{ base_settings_wsl2_distribution }}"
+    ignore_checksums: true
+    state: present

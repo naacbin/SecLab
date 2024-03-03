@@ -1,0 +1,22 @@
+---
+# - name: Ensure .net6 for CLI is installed
+#   chocolatey.chocolatey.win_chocolatey:
+#     name: "{{ item }}"
+#     ignore_checksums: true
+#     state: present
+#     package_params: Skip32Bit
+#   with_items:
+#     - dotnet-6.0-runtime
+#     - dotnet-6.0-desktopruntime
+
+- name: Copy KAPE on target
+  ansible.windows.win_copy:
+    src: "{{ add_kape_file }}"
+    dest: '%UserProfile%\Downloads\'
+  throttle: 1
+
+- name: Unzip KAPE
+  community.windows.win_unzip:
+    src: "%UserProfile%\\Downloads\\{{ add_kape_file }}"
+    dest: '%UserProfile%\Desktop'
+    delete_archive: true

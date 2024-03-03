@@ -1,0 +1,5 @@
+---
+install_psdecode: false
+install_flare_config_file: 'flarevm_maldev.xml'
+add_kape: false
+install_idapro: true

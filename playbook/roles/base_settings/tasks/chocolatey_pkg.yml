@@ -1,0 +1,7 @@
+---
+- name: Ensure configured chocolatey packages are installed.
+  chocolatey.chocolatey.win_chocolatey:
+    name: "{{ item.name | default(item) }}"
+    ignore_checksums: true
+    state: present
+  loop: "{{ base_settings_choco_packages }}"

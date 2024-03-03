@@ -1,0 +1,15 @@
+---
+- name: Set PSDecode module directory
+  ansible.builtin.set_fact:
+    path_psdecode: '%System32%\WindowsPowerShell\v1.0\Modules\PSDecode'
+
+- name: Create PSDecode module directory
+  ansible.windows.win_file:
+    path: "{{ path_psdecode }}"
+    state: directory
+
+- name: Download PSDecode module
+  ansible.windows.win_get_url:
+    url: 'https://raw.githubusercontent.com/R3MRUM/PSDecode/master/PSDecode.psm1'
+    # https://github.com/CybercentreCanada/assemblyline-service-overpower/blob/main/tools/PSDecode.psm1
+    dest: "{{ path_psdecode }}\PSDecode.psm1"

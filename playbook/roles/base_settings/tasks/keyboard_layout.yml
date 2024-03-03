@@ -1,0 +1,4 @@
+---
+- name: French layout
+  ansible.windows.win_shell: |
+    "Set-WinUserLanguageList -LanguageList {{ base_settings_keyboard_layout }} -Force"

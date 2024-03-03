@@ -1,0 +1,4 @@
+---
+- name: Reboot computer
+  ansible.windows.win_reboot:
+  listen: 'reboot'

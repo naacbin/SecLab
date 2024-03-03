@@ -1,0 +1,31 @@
+---
+- name: Ensure system dark mode is enabled.
+  ansible.windows.win_regedit:
+    path: 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize'
+    name: 'SystemUsesLightTheme'
+    data: 0
+    type: dword
+
+- name: Ensure apps dark mode is enabled.
+  ansible.windows.win_regedit:
+    path: 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize'
+    name: 'AppsUseLightTheme'
+    data: 0
+    type: dword
+
+- name: Ensure dark theme is set.
+  ansible.windows.win_regedit:
+    path: 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes'
+    name: "{{ item }}"
+    data: 'C:\\Windows\\resources\\Themes\\dark.theme'
+    type: string
+  with_items:
+    - 'CurrentTheme'
+    - 'ThemeMRU'
+
+- name: Ensure wallpaper is set.
+  ansible.windows.win_regedit:
+    path: 'HKCU:\Control Panel\Desktop'
+    name: 'WallPaper'
+    data: 'C:\\Windows\\Web\\Wallpaper\\Windows\\img19.jpg'
+    type: string

@@ -1,0 +1,24 @@
+---
+- name: Create directory FlareVM
+  ansible.windows.win_file:
+    path: '%UserProfile%\Downloads\flare-vm'
+    state: directory
+
+- name: Download FlareVM installer
+  ansible.windows.win_get_url:
+    url: 'https://raw.githubusercontent.com/mandiant/flare-vm/main/install.ps1'
+    dest: '%UserProfile%\Downloads\flare-vm\install.ps1'
+  throttle: 1
+
+- name: Set custom config
+  ansible.windows.win_copy:
+    src: "{{ install_flare_config_file }}"
+    dest: '%UserProfile%\Downloads\flare-vm\config.xml'
+  throttle: 1
+
+- name: Install FlareVM
+  ansible.windows.win_shell: |
+    Set-ExecutionPolicy Unrestricted -Force
+    .\install.ps1 -customConfig C:\Users\vagrant\Downloads\flare-vm\config.xml -password vagrant -noChecks -noGui -noWait
+  args:
+    chdir: '%UserProfile%\Downloads\flare-vm'

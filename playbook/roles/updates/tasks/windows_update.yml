@@ -1,0 +1,6 @@
+---
+- name: Ensure Windows updates installed.
+  ansible.windows.win_updates:
+    category_names: "{{ item }}"
+    reboot: true
+  loop: "{{ updates_categories }}"

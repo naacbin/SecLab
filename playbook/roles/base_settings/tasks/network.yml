@@ -1,0 +1,9 @@
+---
+- name: Supress network location Prompt.
+  ansible.windows.win_regedit:
+    path: 'HKLM:\SYSTEM\CurrentControlSet\Control\Network\NewNetworkWindowOff'
+
+- name: Sets any network connections detected to Private.
+  ansible.windows.win_powershell:
+    script: |
+      Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory "Private"

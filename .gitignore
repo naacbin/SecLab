@@ -1,0 +1,6 @@
+.vagrant
+forensic/*
+reverse/*
+maldev/*
+playbook/roles/install_idapro
+playbook/roles/add_kape/files/KAPE.zip

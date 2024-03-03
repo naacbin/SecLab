@@ -1,0 +1,19 @@
+---
+- name: "Find latest release from {{ repo }}"
+  ansible.windows.win_uri:
+    url: "https://api.github.com/repos/{{ org }}/{{ repo }}/releases/latest"
+    return_content: true
+  register: latest_release
+
+- name: Set the filename and download url
+  ansible.builtin.set_fact:
+    filename: "{{ asset_file.name }}"
+    download_url: "{{ asset_file.browser_download_url }}"
+  vars:
+    asset_file: "{{ latest_release.json.assets | selectattr('name', 'contains', extension) | join() }}"
+
+- name: "Download {{ filename }}"
+  ansible.windows.win_get_url:
+    url: "{{ download_url }}"
+    dest: "{{ ansible_env[\"TEMP\"] }}\\{{ filename }}"
+  throttle: 1

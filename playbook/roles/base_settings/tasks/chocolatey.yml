@@ -1,0 +1,19 @@
+---
+- name: Ensure .NET Framework 4.8 requirement is satisfied for Chocolatey CLI v2.0.0+.
+  block:
+    - name: Ensure chocolatey is installed.
+      chocolatey.chocolatey.win_chocolatey:
+        name: 'chocolatey'
+        state: present
+
+    - name: Install requirement Microsoft .NET Framework 4.8.
+      chocolatey.chocolatey.win_chocolatey:
+        name: 'netfx-4.8'
+        state: present
+      notify: 'reboot'
+
+    - name: Ensure chocolatey v2.0.0+ is installed.
+      chocolatey.chocolatey.win_chocolatey:
+        name: 'chocolatey'
+        state: latest
+        force: true

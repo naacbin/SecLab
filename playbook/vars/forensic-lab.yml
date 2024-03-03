@@ -1,0 +1,5 @@
+---
+install_psdecode: true
+install_flare_config_file: 'flarevm_forensic.xml'
+add_kape: true
+install_idapro: false

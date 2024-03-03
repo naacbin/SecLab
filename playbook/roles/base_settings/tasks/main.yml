@@ -1,0 +1,52 @@
+---
+- name: Customize keyboard layout
+  ansible.builtin.import_tasks: keyboard_layout.yml
+  when: base_settings_customize_keyboard_layout
+
+- name: Remove bloatware
+  ansible.builtin.import_tasks: debloat.yml
+  when: base_settings_remove_bloatware
+
+- name: Install latest chocolatey version
+  ansible.builtin.import_tasks: chocolatey.yml
+  when: base_settings_install_choco
+
+- name: Install chocolatey packages
+  ansible.builtin.import_tasks: chocolatey_pkg.yml
+  when: base_settings_install_choco_pkg
+
+- name: Install Windows features
+  ansible.builtin.import_tasks: windows_features.yml
+  when: base_settings_install_windows_features
+
+- name: Install WSL 2
+  ansible.builtin.import_tasks: wsl2.yml
+  when: base_settings_install_wsl2
+
+- name: Configure explorer
+  ansible.builtin.import_tasks: explorer.yml
+  when: base_settings_configure_explorer
+
+- name: Configure TaskBar
+  ansible.builtin.import_tasks: taskbar.yml
+  when: base_settings_configure_taskbar
+
+- name: Configure Start Menu
+  ansible.builtin.import_tasks: start_menu.yml
+  when: base_settings_configure_start_menu
+
+- name: Configure network
+  ansible.builtin.import_tasks: network.yml
+  when: base_settings_configure_network
+
+- name: Disable mouse acceleration
+  ansible.builtin.import_tasks: mouse.yml
+  when: base_settings_disable_mouse_acceleration
+
+- name: Enable dark mode
+  ansible.builtin.import_tasks: dark_mode.yml
+  when: base_settings_enable_dark_mode
+
+- name: Configure hostname
+  ansible.builtin.import_tasks: hostname.yml
+  when: base_settings_configure_hostname

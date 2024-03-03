@@ -1,0 +1,5 @@
+---
+install_psdecode: true
+install_flare_config_file: 'flarevm_reverse.xml'
+add_kape: false
+install_idapro: true

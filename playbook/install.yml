@@ -1,0 +1,29 @@
+---
+- name: Configure Windows lab VM
+  hosts: all
+  vars_files:
+    - "./vars/{{ inventory_hostname }}.yml"
+  roles:
+    - role: base_settings
+      when: default
+      tags: ["default"]
+
+    - role: updates
+      when: updates
+      tags: ["updates"]
+
+    - role: install_psdecode
+      when: install_psdecode
+      tags: ["psdecode"]
+
+    - role: add_kape
+      when: add_kape
+      tags: ["kape"]
+
+    # - role: install_idapro
+    #   when: install_idapro
+    #   tags: ["idapro"]
+
+    - role: install_flare
+      when: install_flarevm
+      tags: ["flarevm"]
